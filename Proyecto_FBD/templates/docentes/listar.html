@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Docentes
+{% endblock %}
+
+{% block contenido %}
+<div class="main-content">
+<h2 class="mb-4">
+
+    Lista de Docentes
+
+</h2>
+
+<a href="/docentes/nuevo"
+class="btn btn-success mb-3">
+
+    <i class="bi bi-plus-circle"></i>
+
+    Nuevo Docente
+
+</a>
+
+<table class="table table-bordered table-hover shadow">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>Cédula</th>
+
+            <th>Nombre</th>
+
+            <th>Especialidad</th>
+
+            <th>Departamento</th>
+
+            <th width="180">
+
+                Acciones
+
+            </th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% for docente in docentes %}
+
+        <tr>
+
+            <td>{{ docente.cedula }}</td>
+
+            <td>{{ docente.nombre }}</td>
+
+            <td>{{ docente.especialidad }}</td>
+
+            <td>{{ docente.departamento }}</td>
+
+            <td>
+
+                <a href="/docentes/editar/{{ docente.cedula }}"
+                   class="btn btn-warning btn-sm">
+
+                    Editar
+
+                </a>
+
+                <a href="#"
+                   class="btn btn-danger btn-sm"
+                   onclick="confirmarEliminar(
+                        '/docentes/eliminar/{{ docente.cedula }}',
+                        '¿Está seguro de eliminar este docente?'
+                   )">
+
+                    Eliminar
+
+                </a>
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+</div>
+{% endblock %}

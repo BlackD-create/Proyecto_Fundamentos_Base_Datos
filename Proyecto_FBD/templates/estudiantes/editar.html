@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Editar Estudiante
+{% endblock %}
+
+{% block contenido %}
+<div class="main-content">
+
+    <!-- Todo el contenido -->
+<h2>Editar Estudiante</h2>
+
+<form method="POST">
+
+    <div class="mb-3">
+        <label>Matrícula</label>
+
+        <input
+            type="text"
+            class="form-control"
+            value="{{ estudiante.matricula }}"
+            readonly>
+    </div>
+
+    <div class="mb-3">
+        <label>Nombre</label>
+
+        <input
+            type="text"
+            name="nombre"
+            class="form-control"
+            value="{{ estudiante.nombre }}"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label>Correo</label>
+
+        <input
+            type="email"
+            name="correo"
+            class="form-control"
+            value="{{ estudiante.correo }}"
+            required>
+    </div>
+
+    <button class="btn btn-primary">
+        Guardar Cambios
+    </button>
+
+    <a href="/estudiantes"
+       class="btn btn-secondary">
+       Cancelar
+    </a>
+
+</form>
+</div>
+{% endblock %}

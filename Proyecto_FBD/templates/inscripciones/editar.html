@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Editar Inscripción
+{% endblock %}
+
+{% block contenido %}
+<div class="main-content">
+<h2 class="mb-4">
+
+    Editar Inscripción
+
+</h2>
+
+<form method="POST">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            ID Inscripción
+
+        </label>
+
+        <input
+            type="text"
+            class="form-control"
+            value="{{ inscripcion.id }}"
+            readonly>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Estudiante
+
+        </label>
+
+        <select
+            name="matricula"
+            class="form-select"
+            required>
+
+            {% for estudiante in estudiantes %}
+
+                <option
+                    value="{{ estudiante.matricula }}"
+                    {% if estudiante.matricula == inscripcion.matricula %}selected{% endif %}>
+
+                    {{ estudiante.nombre }}
+
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Curso
+
+        </label>
+
+        <select
+            name="codigo_curso"
+            class="form-select"
+            required>
+
+            {% for curso in cursos %}
+
+                <option
+                    value="{{ curso.codigo }}"
+                    {% if curso.codigo == inscripcion.codigo_curso %}selected{% endif %}>
+
+                    {{ curso.nombre }}
+
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="mb-4">
+
+        <label class="form-label">
+
+            Periodo Académico
+
+        </label>
+
+        <input
+            type="text"
+            name="periodo"
+            class="form-control"
+            value="{{ inscripcion.periodo }}"
+            required>
+
+    </div>
+
+    <button
+        type="submit"
+        class="btn btn-warning">
+
+        Guardar cambios
+
+    </button>
+
+    <a href="/inscripciones"
+       class="btn btn-secondary">
+
+        Cancelar
+
+    </a>
+
+</form>
+</div>
+{% endblock %}

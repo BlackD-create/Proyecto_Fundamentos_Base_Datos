@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Nueva Inscripción
+{% endblock %}
+
+{% block contenido %}
+<div class="main-content">
+<h2 class="mb-4">
+
+    Nueva Inscripción
+
+</h2>
+
+<form method="POST">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Estudiante
+
+        </label>
+
+        <select
+            name="matricula"
+            class="form-select"
+            required>
+
+            <option value="">
+
+                Seleccione un estudiante
+
+            </option>
+
+            {% for estudiante in estudiantes %}
+
+                <option value="{{ estudiante.matricula }}">
+
+                    {{ estudiante.nombre }}
+
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Curso
+
+        </label>
+
+        <select
+            name="codigo_curso"
+            class="form-select"
+            required>
+
+            <option value="">
+
+                Seleccione un curso
+
+            </option>
+
+            {% for curso in cursos %}
+
+                <option value="{{ curso.codigo }}">
+
+                    {{ curso.nombre }}
+
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="mb-4">
+
+        <label class="form-label">
+
+            Periodo Académico
+
+        </label>
+
+        <input
+            type="text"
+            name="periodo"
+            class="form-control"
+            required>
+
+    </div>
+
+    <button class="btn btn-success">
+
+        Guardar
+
+    </button>
+
+    <a href="/inscripciones"
+       class="btn btn-secondary">
+
+        Cancelar
+
+    </a>
+
+</form>
+</div>
+{% endblock %}

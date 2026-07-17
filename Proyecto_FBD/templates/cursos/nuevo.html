@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Nuevo Curso
+{% endblock %}
+
+{% block contenido %}
+<div class="main-content">
+<h2 class="mb-4">
+
+    Nuevo Curso
+
+</h2>
+
+<form method="POST">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Código
+
+        </label>
+
+        <input
+            type="text"
+            name="codigo"
+            class="form-control"
+            required>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Nombre
+
+        </label>
+
+        <input
+            type="text"
+            name="nombre"
+            class="form-control"
+            required>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Créditos
+
+        </label>
+
+        <input
+            type="number"
+            name="creditos"
+            class="form-control"
+            min="1"
+            required>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Docente
+
+        </label>
+
+        <select
+            name="cedula"
+            class="form-select"
+            required>
+
+            <option value="">
+
+                Seleccione un docente
+
+            </option>
+
+            {% for docente in docentes %}
+
+                <option value="{{ docente.cedula }}">
+
+                    {{ docente.nombre }}
+
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="mb-4">
+
+        <label class="form-label">
+
+            Departamento
+
+        </label>
+
+        <select
+            name="codigo_dep"
+            class="form-select"
+            required>
+
+            <option value="">
+
+                Seleccione un departamento
+
+            </option>
+
+            {% for departamento in departamentos %}
+
+                <option value="{{ departamento.codigo }}">
+
+                    {{ departamento.nombre }}
+
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-success">
+
+        Guardar
+
+    </button>
+
+    <a href="/cursos"
+       class="btn btn-secondary">
+
+        Cancelar
+
+    </a>
+
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Nueva Evaluación
+{% endblock %}
+
+{% block contenido %}
+<div class="main-content">
+<h2 class="mb-4">
+
+    Nueva Evaluación
+
+</h2>
+
+<form method="POST">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Inscripción (Estudiante - Curso)
+
+        </label>
+
+        <select
+            name="id"
+            class="form-select"
+            required>
+
+            <option value="">
+
+                Seleccione una inscripción
+
+            </option>
+
+            {% for inscripcion in inscripciones %}
+
+                <option value="{{ inscripcion.id }}">
+
+                    {{ inscripcion.estudiante }} - {{ inscripcion.curso }} ({{ inscripcion.periodo }})
+
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Tipo de Evaluación
+
+        </label>
+
+        <input
+            type="text"
+            name="tipo"
+            class="form-control"
+            placeholder="Ej: Examen 1, Lección, Proyecto"
+            required>
+
+    </div>
+
+    <div class="mb-4">
+
+        <label class="form-label">
+
+            Nota
+
+        </label>
+
+        <input
+            type="number"
+            name="nota"
+            class="form-control"
+            step="0.01"
+            min="0"
+            max="10"
+            required>
+
+    </div>
+
+    <button class="btn btn-success">
+
+        Guardar
+
+    </button>
+
+    <a href="/evaluaciones"
+       class="btn btn-secondary">
+
+        Cancelar
+
+    </a>
+
+</form>
+</div>
+{% endblock %}

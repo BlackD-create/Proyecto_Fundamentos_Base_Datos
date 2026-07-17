@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block titulo %}Sistema de Gestión Universitaria{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <style>
+        .main-content{
+
+            max-width: 1500px;
+
+            margin: auto;
+
+            padding-left: 40px;
+
+            padding-right: 40px;
+
+        }
+        html{
+
+                scroll-behavior:smooth;
+
+       }
+
+       :root{
+
+                --principal:#8B1E3F;
+                --principal-hover:#6F1832;
+                --gris:#F4F6F8;
+                --texto:#343A40;
+
+       }
+
+       body{
+
+                background:var(--gris);
+
+                color:var(--texto);
+
+       }
+
+       .navbar{
+
+                background:var(--principal);
+
+       }
+
+       .hero{
+
+                background:linear-gradient(
+                    rgba(139,30,63,.95),
+                    rgba(139,30,63,.95)
+       );
+
+                color:white;
+
+                padding:90px 0;
+
+       }
+
+       .card-menu{
+
+                transition:.35s;
+
+                border:none;
+
+                border-radius:18px;
+
+       }
+
+       .card-menu:hover{
+
+                transform:translateY(-8px);
+
+                box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+       }
+
+       .btn-danger{
+
+                background:var(--principal);
+
+                border:none;
+
+       }
+
+       .btn-danger:hover{
+
+                background:var(--principal-hover);
+
+       }
+
+       footer{
+
+                background:#212529;
+
+                color:white;
+
+                padding:30px;
+
+                margin-top:70px;
+
+       }
+
+    </style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+
+<div class="container">
+
+<a class="navbar-brand d-flex align-items-center"
+href="/">
+
+<img src="{{ url_for('static', filename='img/logo-espoch.png') }}"
+height="55"
+class="me-3">
+
+<div>
+
+<div class="fw-bold">
+
+Sistema de Gestión Universitaria
+
+</div>
+
+<small>
+
+ESPOCH
+
+</small>
+
+</div>
+
+</a>
+
+<button class="navbar-toggler"
+        data-bs-toggle="collapse"
+        data-bs-target="#menu">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="/">Inicio</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/estudiantes">Estudiantes</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/docentes">Docentes</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/departamentos">Departamentos</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/cursos">Cursos</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/inscripciones">Inscripciones</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/evaluaciones">Evaluaciones</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+<div class="main-content mt-4">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+
+                <div class="alert alert-{{ category }} alert-dismissible fade show shadow"
+                     role="alert">
+
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+
+                    {{ message }}
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close">
+                    </button>
+
+                </div>
+
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+{% block contenido %}
+{% endblock %}
+
+<footer class="text-center">
+
+Sistema de Gestión Universitaria • ESPOCH • 2026
+
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+function confirmarEliminar(url, mensaje){
+
+    Swal.fire({
+
+        title: "Confirmar eliminación",
+        text: mensaje,
+        icon: "warning",
+
+        showCancelButton: true,
+
+        confirmButtonColor: "#8B1E3F",
+        cancelButtonColor: "#6c757d",
+
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar"
+
+    }).then((result)=>{
+
+        if(result.isConfirmed){
+
+            window.location.href = url;
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

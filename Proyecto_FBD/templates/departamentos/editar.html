@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Editar Departamento
+{% endblock %}
+
+{% block contenido %}
+<div class="main-content">
+<h2>Editar Departamento</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+
+<label>
+
+Código
+
+</label>
+
+<input
+type="number"
+class="form-control"
+value="{{ departamento.codigo }}"
+readonly>
+
+</div>
+
+<div class="mb-3">
+
+<label>
+
+Nombre
+
+</label>
+
+<input
+type="text"
+name="nombre"
+class="form-control"
+value="{{ departamento.nombre }}"
+required>
+
+</div>
+
+<button class="btn btn-warning">
+
+Actualizar
+
+</button>
+
+<a href="/departamentos"
+class="btn btn-secondary">
+
+Cancelar
+
+</a>
+
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Cursos
+{% endblock %}
+
+{% block contenido %}
+<div class="main-content">
+<h2 class="mb-4">
+
+    Lista de Cursos
+
+</h2>
+
+<a href="/cursos/nuevo"
+   class="btn btn-success mb-3">
+
+    <i class="bi bi-plus-circle"></i>
+
+    Nuevo Curso
+
+</a>
+
+<table class="table table-bordered table-hover shadow">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>Código</th>
+
+            <th>Nombre</th>
+
+            <th>Créditos</th>
+
+            <th>Docente</th>
+
+            <th>Departamento</th>
+
+            <th width="180">
+
+                Acciones
+
+            </th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% for curso in cursos %}
+
+        <tr>
+
+            <td>{{ curso.codigo }}</td>
+
+            <td>{{ curso.nombre }}</td>
+
+            <td>{{ curso.creditos }}</td>
+
+            <td>{{ curso.docente }}</td>
+
+            <td>{{ curso.departamento }}</td>
+
+            <td>
+
+                <a href="/cursos/editar/{{ curso.codigo }}"
+                   class="btn btn-warning btn-sm">
+
+                    Editar
+
+                </a>
+
+                <a href="#"
+                   class="btn btn-danger btn-sm"
+                   onclick="confirmarEliminar(
+                        '/cursos/eliminar/{{ curso.codigo }}',
+                        '¿Está seguro de eliminar este curso?'
+                   )">
+
+                    Eliminar
+
+                </a>
+
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+</div>
+{% endblock %}

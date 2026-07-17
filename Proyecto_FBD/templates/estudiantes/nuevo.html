@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+{% if estudiante %}Editar Estudiante{% else %}Nuevo Estudiante{% endif %}
+{% endblock %}
+
+{% block contenido %}
+<div class="main-content">
+
+    <!-- Todo el contenido -->
+
+
+<h2>{% if estudiante %}Editar Estudiante{% else %}Nuevo Estudiante{% endif %}</h2>
+
+<form method="POST">
+
+    <div class="mb-3">
+        <label>Matrícula</label>
+        <input
+            type="text"
+            name="matricula"
+            class="form-control"
+            value="{{ estudiante['matricula'] if estudiante else '' }}"
+            {% if estudiante %}readonly{% endif %}
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label>Nombre</label>
+        <input
+            type="text"
+            name="nombre"
+            class="form-control"
+            value="{{ estudiante['nombre'] if estudiante else '' }}"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label>Correo</label>
+        <input
+            type="email"
+            name="correo"
+            class="form-control"
+            value="{{ estudiante['correo'] if estudiante else '' }}"
+            required>
+    </div>
+
+    <button class="btn btn-primary">
+        Guardar
+    </button>
+
+    <a href="/estudiantes" class="btn btn-secondary">
+       Cancelar
+    </a>
+
+</form>
+</div>
+{% endblock %}

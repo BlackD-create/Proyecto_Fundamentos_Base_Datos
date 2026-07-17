@@ -1,0 +1,354 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Inicio
+{% endblock %}
+
+{% block contenido %}
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+                <h1 class="display-2 fw-bold mt-3">
+                    Sistema de Gestión
+                    <br>
+                    Universitaria
+                </h1>
+
+                <p class="lead mt-4">
+
+                    Plataforma para la administración académica de la ESPOCH.
+                    Permite gestionar estudiantes, docentes, departamentos,
+                    cursos, inscripciones y evaluaciones mediante operaciones
+                    CRUD en una interfaz sencilla e intuitiva.
+
+                </p>
+
+                <a href="#modulos" class="btn btn-light btn-lg mt-3">
+
+                    Explorar módulos
+
+                    <i class="bi bi-arrow-down ms-2"></i>
+
+                </a>
+
+            </div>
+
+            <div class="col-lg-6 text-center">
+
+                <div class="card border-0 shadow-lg rounded-4 p-4 bg-white">
+
+                    <img
+                        src="{{ url_for('static', filename='img/logo.jpg') }}"
+                        class="img-fluid hero-logo"
+                        alt="Logo ESPOCH">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="py-5 bg-white">
+
+    <div class="container">
+
+        <div class="row text-center">
+
+            <div class="col-md-2">
+
+                <i class="bi bi-people-fill display-5 text-danger"></i>
+
+                <h2 class="fw-bold mt-2">{{ totales.estudiantes }}</h2>
+
+                <p>Estudiantes</p>
+
+            </div>
+
+            <div class="col-md-2">
+
+                <i class="bi bi-person-workspace display-5 text-danger"></i>
+
+                <h2 class="fw-bold mt-2">{{ totales.docentes }}</h2>
+
+                <p>Docentes</p>
+
+            </div>
+
+            <div class="col-md-2">
+
+                <i class="bi bi-book-half display-5 text-danger"></i>
+
+                <h2 class="fw-bold mt-2">{{ totales.cursos }}</h2>
+
+                <p>Cursos</p>
+
+            </div>
+
+            <div class="col-md-2">
+
+                <i class="bi bi-building display-5 text-danger"></i>
+
+                <h2 class="fw-bold mt-2">{{ totales.departamentos }}</h2>
+
+                <p>Departamentos</p>
+
+            </div>
+
+            <div class="col-md-2">
+
+                <i class="bi bi-pencil-square display-5 text-danger"></i>
+
+                <h2 class="fw-bold mt-2">{{ totales.inscripciones }}</h2>
+
+                <p>Inscripciones</p>
+
+            </div>
+
+            <div class="col-md-2">
+
+                <i class="bi bi-bar-chart-fill display-5 text-danger"></i>
+
+                <h2 class="fw-bold mt-2">{{ totales.evaluaciones }}</h2>
+
+                <p>Evaluaciones</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="modulos" class="py-5">
+
+    <div class="container">
+
+        <h2 class="text-center fw-bold">
+
+            Módulos del Sistema
+
+        </h2>
+
+        <p class="text-center text-muted mb-5">
+
+            Seleccione el módulo que desea administrar.
+
+        </p>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="card card-menu h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-people-fill display-4 text-danger"></i>
+
+                        <h4 class="mt-3">
+
+                            Estudiantes
+
+                        </h4>
+
+                        <p>
+
+                            Registro y administración de estudiantes.
+
+                        </p>
+
+                        <a href="/estudiantes"
+                           class="btn btn-danger">
+
+                            Ingresar
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card card-menu h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-person-workspace display-4 text-danger"></i>
+
+                        <h4 class="mt-3">
+
+                            Docentes
+
+                        </h4>
+
+                        <p>
+
+                            Administración de docentes.
+
+                        </p>
+
+                        <a href="/docentes"
+                           class="btn btn-danger">
+
+                            Ingresar
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card card-menu h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-building display-4 text-danger"></i>
+
+                        <h4 class="mt-3">
+
+                            Departamentos
+
+                        </h4>
+
+                        <p>
+
+                            Gestión de departamentos académicos.
+
+                        </p>
+
+                        <a href="/departamentos"
+                           class="btn btn-danger">
+
+                            Ingresar
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card card-menu h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-book-half display-4 text-danger"></i>
+
+                        <h4 class="mt-3">
+
+                            Cursos
+
+                        </h4>
+
+                        <p>
+
+                            Administración de la oferta académica.
+
+                        </p>
+
+                        <a href="/cursos"
+                           class="btn btn-danger">
+
+                            Ingresar
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card card-menu h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-pencil-square display-4 text-danger"></i>
+
+                        <h4 class="mt-3">
+
+                            Inscripciones
+
+                        </h4>
+
+                        <p>
+
+                            Gestión de estudiantes inscritos.
+
+                        </p>
+
+                        <a href="/inscripciones"
+                           class="btn btn-danger">
+
+                            Ingresar
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card card-menu h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-bar-chart-fill display-4 text-danger"></i>
+
+                        <h4 class="mt-3">
+
+                            Evaluaciones
+
+                        </h4>
+
+                        <p>
+
+                            Registro de calificaciones.
+
+                        </p>
+
+                        <a href="/evaluaciones"
+                           class="btn btn-danger">
+
+                            Ingresar
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

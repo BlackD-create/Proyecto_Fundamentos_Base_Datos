@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Editar Evaluación
+{% endblock %}
+
+{% block contenido %}
+<div class="main-content">
+<h2 class="mb-4">
+
+    Editar Evaluación
+
+</h2>
+
+<form method="POST">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Código Nota
+
+        </label>
+
+        <input
+            type="text"
+            class="form-control"
+            value="{{ evaluacion.id_eval }}"
+            readonly>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Inscripción (Estudiante - Curso)
+
+        </label>
+
+        <select
+            name="id"
+            class="form-select"
+            required>
+
+            {% for inscripcion in inscripciones %}
+
+                <option
+                    value="{{ inscripcion.id }}"
+                    {% if inscripcion.id == evaluacion.id %}selected{% endif %}>
+
+                    {{ inscripcion.estudiante }} - {{ inscripcion.curso }} ({{ inscripcion.periodo }})
+
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Tipo de Evaluación
+
+        </label>
+
+        <input
+            type="text"
+            name="tipo"
+            class="form-control"
+            value="{{ evaluacion.tipo }}"
+            required>
+
+    </div>
+
+    <div class="mb-4">
+
+        <label class="form-label">
+
+            Nota
+
+        </label>
+
+        <input
+            type="number"
+            name="nota"
+            class="form-control"
+            step="0.01"
+            min="0"
+            max="10"
+            value="{{ evaluacion.nota }}"
+            required>
+
+    </div>
+
+    <button
+        type="submit"
+        class="btn btn-warning">
+
+        Guardar cambios
+
+    </button>
+
+    <a href="/evaluaciones"
+       class="btn btn-secondary">
+
+        Cancelar
+
+    </a>
+
+</form>
+</div>
+
+{% endblock %}

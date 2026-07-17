@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Editar Docente
+{% endblock %}
+
+{% block contenido %}
+<div class="main-content">
+<h2 class="mb-4">
+
+    Editar Docente
+
+</h2>
+
+<form method="POST">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Cédula
+
+        </label>
+
+        <input
+            type="text"
+            class="form-control"
+            value="{{ docente.cedula }}"
+            readonly>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Nombre
+
+        </label>
+
+        <input
+            type="text"
+            name="nombre"
+            class="form-control"
+            value="{{ docente.nombre }}"
+            required>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Especialidad
+
+        </label>
+
+        <input
+            type="text"
+            name="especialidad"
+            class="form-control"
+            value="{{ docente.especialidad }}"
+            required>
+
+    </div>
+
+    <div class="mb-4">
+
+        <label class="form-label">
+
+            Departamento
+
+        </label>
+
+        <select
+            name="codigo_dep"
+            class="form-select"
+            required>
+
+            {% for departamento in departamentos %}
+
+                <option
+                    value="{{ departamento.codigo }}"
+                    {% if departamento.codigo == docente.codigo_dep %}
+                        selected
+                    {% endif %}>
+
+                    {{ departamento.nombre }}
+
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-warning">
+
+        Actualizar
+
+    </button>
+
+    <a href="/docentes"
+       class="btn btn-secondary">
+
+        Cancelar
+
+    </a>
+
+</form>
+</div>
+{% endblock %}
